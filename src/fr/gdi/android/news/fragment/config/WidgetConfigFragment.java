@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.appwidget.AppWidgetManager;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.EditTextPreference;
@@ -77,6 +75,9 @@ public class WidgetConfigFragment extends PreferenceFragment implements OnPrefer
             {
                 configuration = new Configuration(getActivity());
                 configuration.setAppWidgetId(appWidgetId);
+                configuration.setBehaviour(declaredBehaviours.get(0));
+                configuration.setFeeds(declaredFeeds);
+                configuration.setTheme(declaredThemes.get(0));
             }
         }
         addPreferencesFromResource(R.xml.widget_config);
@@ -117,25 +118,7 @@ public class WidgetConfigFragment extends PreferenceFragment implements OnPrefer
             startActivityForResult(intent, REQUEST_MAIN_ACTIVITY);
             return true;
         }
-        
-        if ( TextUtils.equals(key, FEEDS) ) 
-        {
-            openFeedSelectionDialog();
-            return true;
-        }
-        
-        if ( TextUtils.equals(key, BEHAVIOUR) ) 
-        {
-            openBehaviourSelectionDialog();
-            return true;
-        }
-        
-        if ( TextUtils.equals(key, THEME) ) 
-        {
-            openThemeSelectionDialog();
-            return true;
-        }
-        
+
         return false;
     }
     
@@ -153,165 +136,6 @@ public class WidgetConfigFragment extends PreferenceFragment implements OnPrefer
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
-   
-    private void openBehaviourSelectionDialog()
-    {
-        if ( declaredBehaviours.size() > 0 ) 
-        {
-            String[] behaviourNames = new String[declaredBehaviours.size()];
-            for (int u = 0; u < declaredBehaviours.size(); u++)
-            {
-                Behaviour behaviour = declaredBehaviours.get(u);
-                behaviourNames[u] = behaviour.getName();
-            }
-
-            int initialSelection = declaredBehaviours.indexOf(configuration.getBehaviour());
-            initialSelection = initialSelection < 0 ? -1 : initialSelection;
-            new AlertDialog.Builder(getActivity())
-                .setTitle(R.string.config_widget_select_behaviour)
-                .setSingleChoiceItems(behaviourNames, initialSelection, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which)
-                    {
-                        Behaviour selected = declaredBehaviours.get(which);
-                        configuration.setBehaviour(selected);
-                        dialog.dismiss();
-                    }
-            }).show();
-        }
-        else 
-        {
-            showMissingObjectDialog(R.string.object_behaviour);
-        }
-    }
-
-    private void openThemeSelectionDialog()
-    {
-        if ( declaredThemes.size() > 0 ) 
-        {
-            String[] themeNames = new String[declaredThemes.size()];
-            for (int u = 0; u < declaredThemes.size(); u++)
-            {
-                Theme theme = declaredThemes.get(u);
-                themeNames[u] = theme.getName();
-            }
-
-            int initialSelection = declaredThemes.indexOf(configuration.getTheme());
-            initialSelection = initialSelection < 0 ? -1 : initialSelection;
-            new AlertDialog.Builder(getActivity())
-                .setTitle(R.string.config_widget_select_theme)
-                .setSingleChoiceItems(themeNames, initialSelection, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which)
-                    {
-                        Theme selected = declaredThemes.get(which);
-                        configuration.setTheme(selected);
-                        dialog.dismiss();
-                    }
-            }).show();
-        }
-        else 
-        {
-            showMissingObjectDialog(R.string.object_theme);
-        }
-    }
-    
-    
-    private void openFeedSelectionDialog()
-    {
-        if ( declaredFeeds.size() == 0 ) 
-        {
-            showMissingObjectDialog(R.string.object_feed);
-            return;
-        }
-        
-        final List<Feed> widgetFeeds = configuration.getFeeds();
-        
-        final String[] options = new String[declaredFeeds.size()];
-        final boolean[] selections = new boolean[options.length];
-
-        for (int u = 0; u < declaredFeeds.size(); u++)
-        {
-            Feed feed = declaredFeeds.get(u);
-            options[u] = feed.getTitle();
-            selections[u] = widgetFeeds.contains(feed); 
-        }
-        
-        new AlertDialog.Builder(getActivity())
-                .setTitle(R.string.config_widget_select_feeds)
-                .setMultiChoiceItems(options, selections, new DialogInterface.OnMultiChoiceClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which, boolean isChecked)
-                    {
-                        selections[which] = isChecked;
-                    }
-                })
-                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which)
-                    {
-                        List<Feed> selected = new ArrayList<Feed>();
-                        
-                        for (int i = 0; i < selections.length; i++)
-                        {
-                            boolean b = selections[i];
-                            if ( b )
-                            {
-                                selected.add(declaredFeeds.get(i));
-                            }
-                        }
-                        
-                        if ( !refreshRequired )  
-                        {
-                            //original state not managed: 
-                            //we ignore the case when list changes twice 
-                            //and finally retrieves its original state
-                            
-                            if ( selected.size() != widgetFeeds.size() ) 
-                            {
-                                refreshRequired = true;
-                            }
-                            else
-                            {
-                                List<Feed> copy1 = new ArrayList<Feed>(widgetFeeds);
-                                copy1.removeAll(selected);
-                                if ( copy1.size() > 0 ) 
-                                {
-                                    refreshRequired = true;
-                                }
-                            }
-                        }
-                        
-                        configuration.setFeeds(selected);
-                        
-                        dialog.dismiss();
-                    }
-                }).show();
-    }
-
-    private void showMissingObjectDialog(int object)
-    {
-        new AlertDialog.Builder(getActivity())
-            .setTitle(R.string.warning)
-            .setMessage(getEmptyCollectionWarning(object))
-            .setIcon(R.drawable.warning)
-            .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which)
-                {
-                    dialog.dismiss();
-                }
-            }).show();
-    }
-    
-    
-    private String getEmptyCollectionWarning(int resId)
-    {
-        String object = getActivity().getText(resId).toString();
-        String msg = getActivity().getText(R.string.config_widget_empty_collection).toString();
-        return String.format(msg, object, object);
-    }
-
     
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue)
