@@ -14,9 +14,7 @@ public class PreferenceUtils
 {
     private static final String LAST_WIDGET_UPDATE_PREFIX = "LAST_WIDGET_UPDATE_"; //$NON-NLS-1$
     public static final String REFRESH_INTERVAL = "refresh_interval_in_minutes"; //$NON-NLS-1$
-    private static final String AUTO_MARK_AS_READ = "auto_mark_as_read"; //$NON-NLS-1$
     private static final String EMBEDDED_IMAGE_MIN_WIDTH = "embedded_image_min_width"; //$NON-NLS-1$
-    private static final String EAGER_FETCH_THUMBNAILS = "eager_fetch_thumbnails";  //$NON-NLS-1$
     private static final String DEBUG_MODE = "debug_mode"; //$NON-NLS-1$
         
     private static final String DEFAULT_REFRESH_INTERVAL = "180"; //$NON-NLS-1$
@@ -42,16 +40,7 @@ public class PreferenceUtils
     {
         setInteger(context, EMBEDDED_IMAGE_MIN_WIDTH, val);
     }
-    
-    public static boolean shouldAutoMarkAsRead(Context context)
-    {
-        return getBoolean(context, AUTO_MARK_AS_READ, false);
-    }
-    
-    public static void setAutoMarkAsRead(Context context, boolean val)
-    {
-        setBoolean(context, AUTO_MARK_AS_READ, val);
-    }    
+   
     
     public static boolean isDebugModeEnabled(Context context)
     {
@@ -66,16 +55,6 @@ public class PreferenceUtils
     private static void preferenceUnavailable(String methodName)
     {
         Log.w(Constants.PACKAGE, "[" + methodName + "] Cannot access preference store: passed context is null."); //$NON-NLS-1$ //$NON-NLS-2$
-    }
-
-    public static boolean shouldFetchThumbnailsEagerly(Context context)
-    {
-        return getBoolean(context, EAGER_FETCH_THUMBNAILS, true);
-    }
-
-    public static void setFetchThumbnailsEagerly(Context context, boolean val)
-    {
-        setBoolean(context, EAGER_FETCH_THUMBNAILS, val);
     }
 
     public static boolean getBoolean(Context context, String key, boolean defaultValue)

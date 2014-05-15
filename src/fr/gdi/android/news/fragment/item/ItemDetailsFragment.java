@@ -171,10 +171,10 @@ public class ItemDetailsFragment extends Fragment implements IItemLoadListener
     public void itemLoaded(Item item)
     {
         currentItem = item;
-        if ( PreferenceUtils.shouldAutoMarkAsRead(getActivity()) && !item.isRead() )
-        {
-            dao.markRead(item);
-        }
+//        if ( !item.isRead() )
+//        {
+//            dao.markRead(item);
+//        }
         
         loaded = true;
         

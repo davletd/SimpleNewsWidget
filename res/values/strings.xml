@@ -268,10 +268,6 @@
     <!-- global settings -->
     <string name="refresh_interval">Refresh interval</string>
     <string name="refresh_interval_summary">How often the widgets should be refreshed (expressed in minutes)</string>
-    <string name="auto_mark_read">Auto mark as read</string>
-    <string name="auto_mark_read_summary">Automatically mark stories as read</string>
-    <string name="fetch_thumbnails">Eagerly fetch thumbnails</string>
-    <string name="fetch_thumbnails_summary">Load thumbnails as soon as possible</string>
     <string name="image_min_width">Embedded image min width</string>
     <string name="image_min_width_summary">Minimal image width to consider</string>
     <string name="debug_mode">Debug</string>

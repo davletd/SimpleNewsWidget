@@ -23,7 +23,7 @@ public class Behaviour implements Serializable, Comparable<Behaviour>
     
     private Mobilizer mobilizer = Mobilizer.NONE;
     
-    private boolean useBuiltInBrowser = true;
+    private boolean useBuiltInBrowser = false;
     
     private int maxNumberOfNews = DEFAULT_NEWS_NUMBER;
     
@@ -35,7 +35,7 @@ public class Behaviour implements Serializable, Comparable<Behaviour>
 
     private boolean clearBeforeLoad = true;
     
-    private boolean distributeEvenly = false;
+    private boolean distributeEvenly = true;
     
     public Behaviour(Context context)
     {

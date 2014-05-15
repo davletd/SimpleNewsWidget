@@ -17,8 +17,6 @@ import fr.gdi.android.news.data.dao.DaoUtils;
 import fr.gdi.android.news.model.Behaviour;
 import fr.gdi.android.news.model.Configuration;
 import fr.gdi.android.news.model.Feed;
-import fr.gdi.android.news.preference.layout.ItemLayout;
-import fr.gdi.android.news.preference.utils.PreferenceUtils;
 import fr.gdi.android.news.utils.DeviceUtils;
 import fr.gdi.android.news.utils.feed.load.FeedLoader;
 
@@ -68,18 +66,12 @@ public class WidgetReloadTask extends AsyncTask<Void, Void, List<Feed>>
         for (Configuration configuration : configs)
         {
             List<Feed> widgetFeeds = configuration.getFeeds();
-            
-            boolean showThumbnails = ItemLayout.values()[configuration.getTheme().getLayout()].isShowThumbnail();
 
             Behaviour behaviour = configuration.getBehaviour();
 
             for (Feed feed : widgetFeeds)
             {
-                if ( showThumbnails && PreferenceUtils.shouldFetchThumbnailsEagerly(context) )
-                {
-                    refHolder.add(feed);                    
-                }
-
+                refHolder.add(feed);                 
                 clearFeeds.put(feed, behaviour.isClearBeforeLoad());
             }
             

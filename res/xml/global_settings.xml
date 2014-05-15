@@ -9,20 +9,6 @@
         android:summary="@string/refresh_interval_summary"
         android:title="@string/refresh_interval" />
 
-    <CheckBoxPreference
-        android:defaultValue="true"
-        android:key="auto_mark_as_read"
-        android:persistent="true"
-        android:summary="@string/auto_mark_read_summary"
-        android:title="@string/auto_mark_read" />
-    
-    <CheckBoxPreference
-        android:defaultValue="true"
-        android:key="eager_fetch_thumbnails"
-        android:persistent="true"
-        android:summary="@string/fetch_thumbnails_summary"
-        android:title="@string/fetch_thumbnails" />
-
     <EditTextPreference
         android:defaultValue="240"
         android:inputType="number"
