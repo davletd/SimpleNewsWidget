@@ -319,17 +319,11 @@ public class NewsWidgetProvider extends AppWidgetProvider
     
     private void setupBackground(Context context, Theme theme, RemoteViews widget)
     {
-        int res = theme.isRoundedCorners() ? getRoundedCornerResId(context) : R.drawable.square_white_png;
+        int res = R.drawable.square_white_png;
         widget.setImageViewResource(R.id.background, res);
        
         widget.setInt(R.id.background, "setColorFilter", theme.getBackgroundColor()); //$NON-NLS-1$
         widget.setInt(R.id.background, "setAlpha", theme.getBackgroundOpacity()); //$NON-NLS-1$
-    }
-    
-    private int getRoundedCornerResId(Context context)
-    {
-        return PreferenceUtils.doesPreferShapeOverNinePatch(context) ? 
-                    R.drawable.rounded_corners_white : R.drawable.rounded_white_png;
     }
 
     @Override

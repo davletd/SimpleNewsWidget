@@ -276,8 +276,6 @@
     <string name="image_min_width_summary">Minimal image width to consider</string>
     <string name="debug_mode">Debug</string>
     <string name="debug_mode_summary">Enable debug mode</string>
-    <string name="prefer_shape_over_ninepatch">Prefer shape over 9-patches</string>
-    <string name="prefer_shape_over_ninepatch_summary">Used when rounded corners option is active. Better graphics and stretchability but may not render correctly on all devices.</string>
     
     <!-- widget config -->
     <string name="launch_main_activity">Edit settings</string>

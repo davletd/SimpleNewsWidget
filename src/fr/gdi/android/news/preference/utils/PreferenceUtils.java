@@ -18,8 +18,7 @@ public class PreferenceUtils
     private static final String EMBEDDED_IMAGE_MIN_WIDTH = "embedded_image_min_width"; //$NON-NLS-1$
     private static final String EAGER_FETCH_THUMBNAILS = "eager_fetch_thumbnails";  //$NON-NLS-1$
     private static final String DEBUG_MODE = "debug_mode"; //$NON-NLS-1$
-    private static final String PREFERE_SHAPE_OVER_NINEPATCH = "prefer_shape_over_ninepatch"; //$NON-NLS-1$
-    
+        
     private static final String DEFAULT_REFRESH_INTERVAL = "180"; //$NON-NLS-1$
     private static final String DEFAULT_EMBEDDED_IMAGE_MIN_WIDTH = "240"; //$NON-NLS-1$
     
@@ -145,14 +144,6 @@ public class PreferenceUtils
         edit.commit();
     }
 
-    public static boolean doesPreferShapeOverNinePatch(Context context)
-    {
-        return getBoolean(context, PREFERE_SHAPE_OVER_NINEPATCH, false);
-    }
-    public static void setPreferShapeOverNinePatch(Context context, boolean val)
-    {
-        setBoolean(context, PREFERE_SHAPE_OVER_NINEPATCH, val);
-    }
 
     public static Date getLastUpdateDate(Context context, int appWidgetId)
     {
