@@ -1,0 +1,75 @@
+/ Feeds
+	/ Add 
+	/ Edit
+	/ Search
+	/ Lookup
+	/ Delete
+	/ Delete all
+	/ Import
+		/ invalid feed declaration
+	/ Export
+ 	  	/ auto-add extension (opml)
+ 	  
+/ Themes
+	/ Add
+	/ Edit
+	/ Delete
+	/ Validate
+	/ Import
+	/ Export
+		/ show target path 
+		/ auto-add extension  (snt)
+
+/ Behaviours
+	/ Add
+	/ Edit
+	/ Delete
+	/ Validate
+	/ Import
+	/ Export 
+		/ show target path 
+		/ auto-add extension (snb)
+    / Clear before load option
+    	/ But keep favorites 
+    / Distribute evenly
+    	/ Check: number of news per feed, order, dates
+    / Widget title date: 
+    	/ No change if no reload (auto|manual)
+    
+/ Statistics
+	/ View
+	/ Delete app cache
+	/ delete thumbnails
+	/ Delete all news
+		/ correctly break
+		/ refresh all widgets
+
+/ Global settings
+	/ Update
+	
+/ Widget
+	/ Config
+	/ Reload
+	/ Refresh
+	/ Interval  
+	
+/ Item list & Favorites
+	/ Mark Read
+	/ Mark unread
+ 	/ Add to favorites
+	/ Remove from favorites
+	/ Reload favorites
+	
+/ Item
+	/ Navigation
+	/ Mark read
+	∕ Mark unread
+	/ Add to favorites
+	/ Remove from favorites
+	/ Share
+    / No description items
+
+/ Honeycomb
+    / Prevent hiding widget title
+    / Fix background issue
+    

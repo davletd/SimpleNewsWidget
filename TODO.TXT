@@ -1,0 +1,40 @@
+/ Done.
+
+    / Foundations {themes, behaviours, feeds, widgets, main}
+
+	/ Feed color
+	/ Item List context menu {update action labels after exec}
+	/ Behaviour option {image size, parse body}
+		/ image size: poor-man solution / see: ItemViewsFactory#bindImage
+		/ parse body: poor-man solution / see: ItemViewsFactory#bindImage
+    / Understand the scrolling issue exhibited by pre-ICS launchers (*GO*, ADW)
+    	/ see: http://code.google.com/p/android-agenda-widget/issues/detail?id=311
+	/ Statistics actions {Clear cache, empty tables, etc.}      
+	/ About fragment {assets/html} 
+    / Fetch images on load option 
+    / Clean up : externalize magic strings (lots of them)
+    
+	/ Use (200-word cropped) content if description not available.
+		/ testcase: http://code.google.com/feeds/p/scrollable-news-widget/issueupdates/basic 
+    / (BUG?) Nothing to read message even though there are articles left to read
+	/ (BUG?) Auto-refresh breaks after switching WIFI on and off again 
+
+	/ (FEAT) Only set date when item fetching actually occurs
+	/ (FEAT) Add max item per source option   
+
+- Later.
+
+	- (BUGS) drastically improve image parse/handle (thread/queue)
+	- (DSGN) Replace context menus with contextual ActionBar (CAB) 
+    - (FEAT) Widget item row click {popup menu, read, nothin}
+	- (FEAT) Story list theme+behaviour {&favorites, global preference}
+	- (REFA) Clean up daos  {factorize, generalize, modularize} 
+	- (FEAT) Google Reader support
+	- (BUGS) Tablet PreferenceScreen display
+	- (FEAT) Tablet optimized UI
+
+X Dropped. 
+
+	X Feed categories
+  
+     
