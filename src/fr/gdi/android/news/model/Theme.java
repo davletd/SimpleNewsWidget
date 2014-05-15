@@ -48,7 +48,7 @@ public class Theme implements Serializable, Comparable<Theme>
     private boolean showWidgetTitle = true;
     private int widgetTitleColor = Color.WHITE;
     
-    private int layout = 2;
+    private int layout = 4;
     
     private int numColumns = 1;
     

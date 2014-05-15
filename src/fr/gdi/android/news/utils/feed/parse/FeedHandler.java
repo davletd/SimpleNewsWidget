@@ -257,6 +257,18 @@ public class FeedHandler extends DefaultHandler
                     mMimeAttribute = attributes.getValue("type"); //$NON-NLS-1$
                     mHrefAttribute = attributes.getValue("url"); //$NON-NLS-1$
                     isEnclosure = true;
+                    
+                    if ( isItem )
+                    {
+                        try 
+                        {
+                            mItem.setImage(new URL(mHrefAttribute));
+                        }
+                        catch ( Exception e ) 
+                        {
+                            //swallow
+                        }
+                    }
                 }
             }
         }
