@@ -6,7 +6,7 @@
   android:previewImage="@drawable/widget_preview"
   android:updatePeriodMillis="0"
   android:resizeMode="vertical|horizontal"
-  android:configure="fr.gdi.android.news.activity.ConfigurationActivity"
+  android:configure="nsb.widget.news.activity.ConfigurationActivity"
   android:minResizeWidth="250dp"
   android:minResizeHeight="40dp"
 />
