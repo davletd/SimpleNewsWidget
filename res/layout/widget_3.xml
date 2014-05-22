@@ -40,7 +40,7 @@
 					android:id="@+id/edit_button" 
 					android:layout_width="22dip"
 					android:layout_height="22dp"
-					android:src="@drawable/big_dot"
+					android:src="@drawable/nsb_white"
 					android:scaleType="centerInside"
 					android:alpha="40"
 					android:layout_alignParentTop="true"

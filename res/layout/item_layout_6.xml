@@ -16,7 +16,7 @@
 		android:gravity="left"
 		android:textSize="14.0dip" />
     
-    	<ImageView
+    <ImageView
 	    android:id="@+id/thumbnail"
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
@@ -24,26 +24,29 @@
 	    android:scaleType="centerCrop"
 	    android:src="@drawable/default_feed_icon" />
 
-    <TextView android:id="@+id/item_author" 
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content" 
-				android:textSize="10.0dip"
-				android:maxLines="1"
-
-				android:paddingLeft="6dip"
-				android:paddingTop="6dip"
-				
-
-				/>
-	<TextView android:id="@+id/item_date" 
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:gravity="right"
-		android:textSize="10.0dip" 
-		android:maxLines="1" 
-
-		android:paddingTop="6dip"
-	/>
+    <LinearLayout 
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:orientation="horizontal">
+        
+	    <TextView android:id="@+id/item_author" 
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content" 
+			android:textSize="10.0dip"
+			android:maxLines="1"
+			android:paddingLeft="6dip"
+			android:paddingTop="6dip" />
+	    
+		<TextView android:id="@+id/item_date" 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:gravity="right"
+			android:textSize="10.0dip" 
+			android:maxLines="1" 
+	
+			android:paddingTop="6dip"
+		/>
+	</LinearLayout>
 	
 	<TextView android:id="@+id/item_link"
 			android:layout_width="fill_parent"
